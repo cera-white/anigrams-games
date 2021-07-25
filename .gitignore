@@ -1,0 +1,16 @@
+.vs
+packages
+*.sln
+*/_archive
+*/bin
+*/obj
+*/Properties
+*.csproj
+*.csproj.user
+*/Web.config
+*/Web.Debug.config
+*/Web.Release.config
+*/App.config
+charactercreator
+downloads
+*/BingSiteAuth.xml

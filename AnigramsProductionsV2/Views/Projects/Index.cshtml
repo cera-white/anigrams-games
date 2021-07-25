@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AnigramsProductionsV2.EF.AnigramsProject>
+
+@{
+    ViewBag.Title = "Projects - Anigrams Productions";
+}
+
+<!-- banner -->
+<div class="banner">
+    <div class="bnr2">
+    </div>
+</div>
+<!-- content -->
+<div class="review">
+    <div class="container">
+        <h2>Games &amp; Projects</h2>
+        <div class="review-md1">
+            @foreach (var item in Model.Where(x => x.ProjectID <= 3))
+            {
+                <div class="col-md-4 sed-md">
+                    <a href="@Url.Action("Details", "Projects", new { id = item.ProjectID })">
+                        <div class="col-1">
+                            <img class="img-responsive" src="~/images/@item.SquareThumb" alt="@item.Title">
+                            <h4>@item.Title</h4>
+                            <p>@item.Description</p>
+                        </div>
+                    </a>
+                </div>
+            }
+            <div class="clearfix"> </div>
+        </div>
+        <div class="review-md1">
+            @foreach (var item in Model.Where(x => x.ProjectID > 3))
+            {
+                <div class="col-md-4 sed-md">
+                    <a href="@Url.Action("Details", "Projects", new { id = item.ProjectID })">
+                        <div class="col-1">
+                            <img class="img-responsive" src="~/images/@item.SquareThumb" alt="@item.Title">
+                            <h4>@item.Title</h4>
+                            <p>@item.Description</p>
+                        </div>
+                    </a>
+                </div>
+            }
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>

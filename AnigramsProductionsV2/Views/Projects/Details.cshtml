@@ -1,0 +1,72 @@
+﻿@model AnigramsProductionsV2.EF.AnigramsProject
+
+@{
+    ViewBag.Title = Model.Title + " - Anigrams Productions";
+}
+
+<!-- banner -->
+<div class="banner">
+    <div class="bnr2">
+    </div>
+</div>
+<!-- content -->
+<div class="about">
+    <div class="container">
+        <h2>@Model.Title</h2>
+        <div class="about-info-grids">
+            <div class="col-md-5 abt-pic">
+                @Html.Raw(Model.SideContent)
+            </div>
+            <div class="col-md-7 abt-info-pic">
+                <h4>@Model.Tagline</h4>
+                @Html.Raw(Model.Summary)
+
+                @Html.Raw(Model.Link)
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        @if (Model.AnigramsReviews.Count > 0)
+        {
+            <div class="testimonals">
+                <h3>Reviews</h3>
+                <div class="testimonal-grids">
+                    @foreach (var item in Model.AnigramsReviews)
+                    {
+                        <div class="col-md-4 testimonal-grid">
+                            <div class="testi-info">
+                                <p>@item.Description</p>
+                                <h4>@item.Author</h4>
+                                <a href="@item.ReviewLink" target="_blank">@item.AuthorLink</a>
+                            </div>
+                        </div>
+                    }
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        }
+        @if (Model.AnigramsCharacters.Count > 0)
+        {
+            <div class="team">
+                <h3>Characters</h3>
+                @foreach (var item in Model.AnigramsCharacters.Select((value, i) => new { i, value }))
+                {
+                    <div class="grid_4">
+                        <div class="team-grid">
+                            <img src="~/images/@item.value.Picture" alt="@item.value.Name">
+                            <h4>@item.value.Name@(item.value.Title != null ? string.Format(", {0}", item.value.Title) : "")</h4>
+                            <p>@item.value.Description</p>
+                        </div>
+                    </div>
+
+                    if (item.i == 3 || item.i == 7)
+                    {
+                        <div class="clearfix"></div>
+                    }
+                }
+                <div class="clearfix"></div>
+            </div>
+        }
+        
+    </div>
+</div>

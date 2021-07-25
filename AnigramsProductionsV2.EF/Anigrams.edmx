@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AnigramsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AnigramsCharacters">
+          <Key>
+            <PropertyRef Name="CharacterID" />
+          </Key>
+          <Property Name="CharacterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Picture" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AnigramsProjects">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShortTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="ShortDescription" Type="nvarchar" MaxLength="250" />
+          <Property Name="SquareThumb" Type="nvarchar" MaxLength="100" />
+          <Property Name="PortraitThumb" Type="nvarchar" MaxLength="100" />
+          <Property Name="Tagline" Type="nvarchar" MaxLength="100" />
+          <Property Name="Summary" Type="nvarchar(max)" />
+          <Property Name="Link" Type="nvarchar" MaxLength="500" />
+          <Property Name="SideContent" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="AnigramsReviews">
+          <Key>
+            <PropertyRef Name="ReviewID" />
+          </Key>
+          <Property Name="ReviewID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="Author" Type="nvarchar" MaxLength="100" />
+          <Property Name="AuthorLink" Type="nvarchar" MaxLength="200" />
+          <Property Name="ReviewLink" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="GenLanguages">
+          <Key>
+            <PropertyRef Name="LanguageID" />
+          </Key>
+          <Property Name="LanguageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gendered" Type="bit" Nullable="false" />
+          <Property Name="Structure" Type="nvarchar" MaxLength="20" />
+          <Property Name="AdjectiveBefore" Type="bit" />
+        </EntityType>
+        <EntityType Name="GenLanguageSymbols">
+          <Key>
+            <PropertyRef Name="LanguageSymbolID" />
+          </Key>
+          <Property Name="LanguageSymbolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LanguageID" Type="int" Nullable="false" />
+          <Property Name="SymbolID" Type="int" Nullable="false" />
+          <Property Name="Examples" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="GenSuffixes">
+          <Key>
+            <PropertyRef Name="SuffixID" />
+          </Key>
+          <Property Name="SuffixID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LanguageID" Type="int" Nullable="false" />
+          <Property Name="Native" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phonetic" Type="nvarchar" MaxLength="20" />
+          <Property Name="Code" Type="nvarchar" MaxLength="20" />
+          <Property Name="Gender" Type="nchar" MaxLength="1" />
+          <Property Name="Meaning" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="GenSymbols">
+          <Key>
+            <PropertyRef Name="SymbolID" />
+          </Key>
+          <Property Name="SymbolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Symbol" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="15" />
+          <Property Name="English" Type="nvarchar" MaxLength="5" />
+          <Property Name="IsVowel" Type="bit" Nullable="false" />
+          <Property Name="IsSeparator" Type="bit" />
+        </EntityType>
+        <Association Name="FK_AnigramsCharacters_AnigramsProjects">
+          <End Role="AnigramsProjects" Type="Self.AnigramsProjects" Multiplicity="1" />
+          <End Role="AnigramsCharacters" Type="Self.AnigramsCharacters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnigramsProjects">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="AnigramsCharacters">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnigramsReviews_AnigramsProjects">
+          <End Role="AnigramsProjects" Type="Self.AnigramsProjects" Multiplicity="1" />
+          <End Role="AnigramsReviews" Type="Self.AnigramsReviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnigramsProjects">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="AnigramsReviews">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GenLanguageSymbols_GenLanguages">
+          <End Role="GenLanguages" Type="Self.GenLanguages" Multiplicity="1" />
+          <End Role="GenLanguageSymbols" Type="Self.GenLanguageSymbols" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GenLanguages">
+              <PropertyRef Name="LanguageID" />
+            </Principal>
+            <Dependent Role="GenLanguageSymbols">
+              <PropertyRef Name="LanguageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GenLanguageSymbols_GenSymbols">
+          <End Role="GenSymbols" Type="Self.GenSymbols" Multiplicity="1" />
+          <End Role="GenLanguageSymbols" Type="Self.GenLanguageSymbols" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GenSymbols">
+              <PropertyRef Name="SymbolID" />
+            </Principal>
+            <Dependent Role="GenLanguageSymbols">
+              <PropertyRef Name="SymbolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GenSuffixes_GenLanguages">
+          <End Role="GenLanguages" Type="Self.GenLanguages" Multiplicity="1" />
+          <End Role="GenSuffixes" Type="Self.GenSuffixes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GenLanguages">
+              <PropertyRef Name="LanguageID" />
+            </Principal>
+            <Dependent Role="GenSuffixes">
+              <PropertyRef Name="LanguageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AnigramsModelStoreContainer">
+          <EntitySet Name="AnigramsCharacters" EntityType="Self.AnigramsCharacters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnigramsProjects" EntityType="Self.AnigramsProjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnigramsReviews" EntityType="Self.AnigramsReviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GenLanguages" EntityType="Self.GenLanguages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GenLanguageSymbols" EntityType="Self.GenLanguageSymbols" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GenSuffixes" EntityType="Self.GenSuffixes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GenSymbols" EntityType="Self.GenSymbols" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AnigramsCharacters_AnigramsProjects" Association="Self.FK_AnigramsCharacters_AnigramsProjects">
+            <End Role="AnigramsProjects" EntitySet="AnigramsProjects" />
+            <End Role="AnigramsCharacters" EntitySet="AnigramsCharacters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnigramsReviews_AnigramsProjects" Association="Self.FK_AnigramsReviews_AnigramsProjects">
+            <End Role="AnigramsProjects" EntitySet="AnigramsProjects" />
+            <End Role="AnigramsReviews" EntitySet="AnigramsReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GenLanguageSymbols_GenLanguages" Association="Self.FK_GenLanguageSymbols_GenLanguages">
+            <End Role="GenLanguages" EntitySet="GenLanguages" />
+            <End Role="GenLanguageSymbols" EntitySet="GenLanguageSymbols" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GenLanguageSymbols_GenSymbols" Association="Self.FK_GenLanguageSymbols_GenSymbols">
+            <End Role="GenSymbols" EntitySet="GenSymbols" />
+            <End Role="GenLanguageSymbols" EntitySet="GenLanguageSymbols" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GenSuffixes_GenLanguages" Association="Self.FK_GenSuffixes_GenLanguages">
+            <End Role="GenLanguages" EntitySet="GenLanguages" />
+            <End Role="GenSuffixes" EntitySet="GenSuffixes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AnigramsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GenLanguage">
+          <Key>
+            <PropertyRef Name="LanguageID" />
+          </Key>
+          <Property Name="LanguageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gendered" Type="Boolean" Nullable="false" />
+          <Property Name="Structure" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AdjectiveBefore" Type="Boolean" />
+          <NavigationProperty Name="GenLanguageSymbols" Relationship="Self.FK_GenLanguageSymbols_GenLanguages" FromRole="GenLanguages" ToRole="GenLanguageSymbols" />
+          <NavigationProperty Name="GenSuffixes" Relationship="Self.FK_GenSuffixes_GenLanguages" FromRole="GenLanguages" ToRole="GenSuffixes" />
+        </EntityType>
+        <EntityType Name="GenLanguageSymbol">
+          <Key>
+            <PropertyRef Name="LanguageSymbolID" />
+          </Key>
+          <Property Name="LanguageSymbolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LanguageID" Type="Int32" Nullable="false" />
+          <Property Name="SymbolID" Type="Int32" Nullable="false" />
+          <Property Name="Examples" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GenLanguage" Relationship="Self.FK_GenLanguageSymbols_GenLanguages" FromRole="GenLanguageSymbols" ToRole="GenLanguages" />
+          <NavigationProperty Name="GenSymbol" Relationship="Self.FK_GenLanguageSymbols_GenSymbols" FromRole="GenLanguageSymbols" ToRole="GenSymbols" />
+        </EntityType>
+        <EntityType Name="GenSuffix">
+          <Key>
+            <PropertyRef Name="SuffixID" />
+          </Key>
+          <Property Name="SuffixID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LanguageID" Type="Int32" Nullable="false" />
+          <Property Name="Native" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Phonetic" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Meaning" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GenLanguage" Relationship="Self.FK_GenSuffixes_GenLanguages" FromRole="GenSuffixes" ToRole="GenLanguages" />
+        </EntityType>
+        <EntityType Name="GenSymbol">
+          <Key>
+            <PropertyRef Name="SymbolID" />
+          </Key>
+          <Property Name="SymbolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Symbol" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="English" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="IsVowel" Type="Boolean" Nullable="false" />
+          <Property Name="IsSeparator" Type="Boolean" />
+          <NavigationProperty Name="GenLanguageSymbols" Relationship="Self.FK_GenLanguageSymbols_GenSymbols" FromRole="GenSymbols" ToRole="GenLanguageSymbols" />
+        </EntityType>
+        <Association Name="FK_GenLanguageSymbols_GenLanguages">
+          <End Role="GenLanguages" Type="Self.GenLanguage" Multiplicity="1" />
+          <End Role="GenLanguageSymbols" Type="Self.GenLanguageSymbol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GenLanguages">
+              <PropertyRef Name="LanguageID" />
+            </Principal>
+            <Dependent Role="GenLanguageSymbols">
+              <PropertyRef Name="LanguageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GenSuffixes_GenLanguages">
+          <End Role="GenLanguages" Type="Self.GenLanguage" Multiplicity="1" />
+          <End Role="GenSuffixes" Type="Self.GenSuffix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GenLanguages">
+              <PropertyRef Name="LanguageID" />
+            </Principal>
+            <Dependent Role="GenSuffixes">
+              <PropertyRef Name="LanguageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GenLanguageSymbols_GenSymbols">
+          <End Role="GenSymbols" Type="Self.GenSymbol" Multiplicity="1" />
+          <End Role="GenLanguageSymbols" Type="Self.GenLanguageSymbol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GenSymbols">
+              <PropertyRef Name="SymbolID" />
+            </Principal>
+            <Dependent Role="GenLanguageSymbols">
+              <PropertyRef Name="SymbolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AnigramsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GenLanguages" EntityType="Self.GenLanguage" />
+          <EntitySet Name="GenLanguageSymbols" EntityType="Self.GenLanguageSymbol" />
+          <EntitySet Name="GenSuffixes" EntityType="Self.GenSuffix" />
+          <EntitySet Name="GenSymbols" EntityType="Self.GenSymbol" />
+          <AssociationSet Name="FK_GenLanguageSymbols_GenLanguages" Association="Self.FK_GenLanguageSymbols_GenLanguages">
+            <End Role="GenLanguages" EntitySet="GenLanguages" />
+            <End Role="GenLanguageSymbols" EntitySet="GenLanguageSymbols" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GenSuffixes_GenLanguages" Association="Self.FK_GenSuffixes_GenLanguages">
+            <End Role="GenLanguages" EntitySet="GenLanguages" />
+            <End Role="GenSuffixes" EntitySet="GenSuffixes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GenLanguageSymbols_GenSymbols" Association="Self.FK_GenLanguageSymbols_GenSymbols">
+            <End Role="GenSymbols" EntitySet="GenSymbols" />
+            <End Role="GenLanguageSymbols" EntitySet="GenLanguageSymbols" />
+          </AssociationSet>
+          <EntitySet Name="AnigramsCharacters" EntityType="AnigramsModel.AnigramsCharacter" />
+          <EntitySet Name="AnigramsProjects" EntityType="AnigramsModel.AnigramsProject" />
+          <EntitySet Name="AnigramsReviews" EntityType="AnigramsModel.AnigramsReview" />
+          <AssociationSet Name="FK_AnigramsCharacters_AnigramsProjects" Association="AnigramsModel.FK_AnigramsCharacters_AnigramsProjects">
+            <End Role="AnigramsProject" EntitySet="AnigramsProjects" />
+            <End Role="AnigramsCharacter" EntitySet="AnigramsCharacters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnigramsReviews_AnigramsProjects" Association="AnigramsModel.FK_AnigramsReviews_AnigramsProjects">
+            <End Role="AnigramsProject" EntitySet="AnigramsProjects" />
+            <End Role="AnigramsReview" EntitySet="AnigramsReviews" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AnigramsCharacter">
+          <Key>
+            <PropertyRef Name="CharacterID" />
+          </Key>
+          <Property Name="CharacterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AnigramsProject" Relationship="AnigramsModel.FK_AnigramsCharacters_AnigramsProjects" FromRole="AnigramsCharacter" ToRole="AnigramsProject" />
+        </EntityType>
+        <EntityType Name="AnigramsProject">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SquareThumb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PortraitThumb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Tagline" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SideContent" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AnigramsCharacters" Relationship="AnigramsModel.FK_AnigramsCharacters_AnigramsProjects" FromRole="AnigramsProject" ToRole="AnigramsCharacter" />
+          <NavigationProperty Name="AnigramsReviews" Relationship="AnigramsModel.FK_AnigramsReviews_AnigramsProjects" FromRole="AnigramsProject" ToRole="AnigramsReview" />
+          <Property Name="ShortDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ShortTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AnigramsReview">
+          <Key>
+            <PropertyRef Name="ReviewID" />
+          </Key>
+          <Property Name="ReviewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectID" Type="Int32" Nullable="false" />
+          <Property Name="Author" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorLink" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ReviewLink" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AnigramsProject" Relationship="AnigramsModel.FK_AnigramsReviews_AnigramsProjects" FromRole="AnigramsReview" ToRole="AnigramsProject" />
+        </EntityType>
+        <Association Name="FK_AnigramsCharacters_AnigramsProjects">
+          <End Type="AnigramsModel.AnigramsProject" Role="AnigramsProject" Multiplicity="1" />
+          <End Type="AnigramsModel.AnigramsCharacter" Role="AnigramsCharacter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnigramsProject">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="AnigramsCharacter">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnigramsReviews_AnigramsProjects">
+          <End Type="AnigramsModel.AnigramsProject" Role="AnigramsProject" Multiplicity="1" />
+          <End Type="AnigramsModel.AnigramsReview" Role="AnigramsReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnigramsProject">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="AnigramsReview">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AnigramsModelStoreContainer" CdmEntityContainer="AnigramsEntities">
+          <EntitySetMapping Name="GenLanguages">
+            <EntityTypeMapping TypeName="AnigramsModel.GenLanguage">
+              <MappingFragment StoreEntitySet="GenLanguages">
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Gendered" ColumnName="Gendered" />
+                <ScalarProperty Name="Structure" ColumnName="Structure" />
+                <ScalarProperty Name="AdjectiveBefore" ColumnName="AdjectiveBefore" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GenLanguageSymbols">
+            <EntityTypeMapping TypeName="AnigramsModel.GenLanguageSymbol">
+              <MappingFragment StoreEntitySet="GenLanguageSymbols">
+                <ScalarProperty Name="LanguageSymbolID" ColumnName="LanguageSymbolID" />
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+                <ScalarProperty Name="SymbolID" ColumnName="SymbolID" />
+                <ScalarProperty Name="Examples" ColumnName="Examples" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GenSuffixes">
+            <EntityTypeMapping TypeName="AnigramsModel.GenSuffix">
+              <MappingFragment StoreEntitySet="GenSuffixes">
+                <ScalarProperty Name="SuffixID" ColumnName="SuffixID" />
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+                <ScalarProperty Name="Native" ColumnName="Native" />
+                <ScalarProperty Name="Phonetic" ColumnName="Phonetic" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Meaning" ColumnName="Meaning" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GenSymbols">
+            <EntityTypeMapping TypeName="AnigramsModel.GenSymbol">
+              <MappingFragment StoreEntitySet="GenSymbols">
+                <ScalarProperty Name="SymbolID" ColumnName="SymbolID" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="English" ColumnName="English" />
+                <ScalarProperty Name="IsVowel" ColumnName="IsVowel" />
+                <ScalarProperty Name="IsSeparator" ColumnName="IsSeparator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnigramsCharacters">
+            <EntityTypeMapping TypeName="AnigramsModel.AnigramsCharacter">
+              <MappingFragment StoreEntitySet="AnigramsCharacters">
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnigramsProjects">
+            <EntityTypeMapping TypeName="AnigramsModel.AnigramsProject">
+              <MappingFragment StoreEntitySet="AnigramsProjects">
+                <ScalarProperty Name="ShortTitle" ColumnName="ShortTitle" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="SideContent" ColumnName="SideContent" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Tagline" ColumnName="Tagline" />
+                <ScalarProperty Name="PortraitThumb" ColumnName="PortraitThumb" />
+                <ScalarProperty Name="SquareThumb" ColumnName="SquareThumb" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnigramsReviews">
+            <EntityTypeMapping TypeName="AnigramsModel.AnigramsReview">
+              <MappingFragment StoreEntitySet="AnigramsReviews">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ReviewLink" ColumnName="ReviewLink" />
+                <ScalarProperty Name="AuthorLink" ColumnName="AuthorLink" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

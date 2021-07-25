@@ -1,0 +1,367 @@
+﻿@model AnigramsProductionsV2.Models.ContactViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cera A. White - .NET Developer</title>
+    <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/portfolio.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="../css/custom.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Cera A. White, Anigrams, Anigrams Productions, developer, .NET developer, portfolio" />
+    <meta name="author" content="Cera A. White" />
+    <meta http-equiv="content-language" content="en-us" />
+
+    <link rel="icon" href="~/images/icon.png" type="image/png" />
+
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <!---- start-smoth-scrolling---->
+    <script type="text/javascript" src="../js/move-top.js"></script>
+    <script type="text/javascript" src="../js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!---- start-smoth-scrolling---->
+</head>
+<body>
+    <h1 style="display: none;">Cera A. White - .NET Developer</h1>
+    <!-- header -->
+    <div class="top-banner">
+        <div class="header-top">
+            <div class="container">
+
+                <div class="headr-left">
+                    <div class="social">
+                        <a href="https://www.linkedin.com/in/cera-white-284a6041" target="_blank" title="View my professional profile on Linked In"><i class="linkedin"></i></a>
+                        <a href="http://anigrams-games.tumblr.com/" target="_blank" title="Check out my blog where I support indie game devs"><i class="tumblr"></i></a>
+                        <a href="http://www.twitch.tv/anigrams/profile" target="_blank" title="Watch me play and review cool games on Twitch"><i class="twitch"></i></a>
+                        <a href="https://www.youtube.com/channel/UCODp-QC2dsOn_3HJ32TfsIQ" target="_blank" title="Visit the official Anigrams YouTube channel"><i class="youtube"></i></a>
+                        <a href="https://www.facebook.com/cera.white.94" target="_blank" title="Take a peek into my life outside of programming"><i class="facebook"></i></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="headr-right">
+                    <div class="details">
+                        <ul>
+                            <li class="switch-view"><a href="@Url.Action("Index", "Home")">Anigrams Productions</a></li>
+                            <li class="switch-view selected"><a href="@Url.Action("Index", "Portfolio")">Professional Portfolio</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!------headerbg starts--------->
+    <div id="top-top" class="headerbg">
+
+        <!------header starts--------->
+        <div class="header">
+            <!------container starts--------->
+            <div class="container">
+
+                <div class="resume">
+                    <a href="@Url.Action("Resume", "Portfolio")">Resume</a>
+                </div>
+                <!------Navigation starts--------->
+                <div class="nav">
+                    <ul>
+                        <li><a class="scroll" href="#about">ABOUT</a></li>
+                        <li><a class="scroll" href="#skills">SKILLS</a></li>
+                        <li><a class="scroll" href="#projects">PROJECTS</a></li>
+                        @*<li><a class="scroll" href="#resources">RESOURCES</a></li>*@
+                        <li><a class="scroll" href="#contact">CONTACT</a></li>
+                    </ul>
+                </div>
+                <!------Navigation ends-------->
+                <div class="clear"></div>
+            </div>
+            <!------container ends--------->
+        </div>
+        <!------header ends--------->
+        <!------Banner starts--------->
+        <div class="banner">
+
+            <div class="container">
+                <div class="banner-info">
+                    <div class="bannerlogo">
+                        <img src="../images/portfoliologo.png">
+                    </div>
+                    <div class="bannerhead">
+                        <h2>My name is <span>Cera A. White</span></h2>
+                        <h3>.NET Developer</h3>
+                        <p>
+                            Computer programmer, web developer, hobbyist game designer, and more!
+                        </p>
+                        <a class="downarrow scroll" href="#about"><span> </span></a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <!------Banner ends-------->
+    </div>
+    <!------Headerbg ends-------->
+    <!------Content starts--------->
+    <div class="content">
+        <!------About starts--------->
+        <div id="about" class="about">
+            <div class="container">
+                <div class="header-section text-center">
+                    <h2><span></span>ABOUT<span></span></h2>
+                </div>
+
+                <p>I'm <strong>Cera White</strong>, the founder and main programmer behind <strong>Anigrams Productions</strong>, and this is my professional portfolio.</p>
+                <p>I graduated from <strong>Drury University</strong> in 2012 with a major in <strong>Computer Information Systems</strong>. For two years, I worked as an inventory expert at <strong>RGIS</strong>, where I learned a great deal about hard work, teamwork, and responsibility, while providing clients with accurate and efficient annual inventory audits. Before that, I held a brief internship at <strong>Meyer Accounting and Tax, LLC</strong>, where I worked with them to gather information regarding their needs and concerns, and developed a new database and company website to meet their specifications.</p>
+                <p>Last year, I graduated from <strong>Centriq Training</strong> where I trained to become a .NET developer. Although I come from a family of developers, I didn't become interested in programming until my freshman year of college, when I tried my hand at designing my own computer game and absolutely fell in love. It was so exciting to build the logic piece by piece, find solutions to the various problems I came across, and watch my very own creation come to life. I've learned a great deal from designing my own games, including how to research the market, collaborate with a team, and design a user-friendly interface, and of course I've also benefited from the hands-on programming experience.</p>
+                <p>Currently, I'm working as a <strong>Software Engineer</strong> at <strong>UnitedLex</strong>. My job involves working on both independent and team-based development projects to support internal business users.</p>
+
+                <a class="arrow scroll" href="#skills"><span> </span></a>
+            </div>
+        </div>
+        <!------About Ends--------->
+        <!------SKILLS Starts--------->
+        <div id="skills" class="skills">
+            <div class="container">
+                <div class="skills-grids">
+                    <div class="skill-section text-center">
+                        <h2><span> </span>SKILLS<span> </span></h2>
+                    </div>
+                    <div class="services_grids">
+                        <div id="canvas">
+                            <div class="skill-grids text-center">
+                                <div class="col-md-3">
+                                    <div class="skill-grid">
+                                        <div class="circle" id="circles-2"></div>
+                                        <h3>C#</h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="skill-grid">
+                                        <div class="circle" id="circles-4"></div>
+                                        <h3>HTML5</h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="skill-grid">
+                                        <div class="circle" id="circles-3"></div>
+                                        <h3>CSS3</h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="skill-grid">
+                                        <div class="circle" id="circles-1"></div>
+                                        <h3>JAVASCRIPT</h3>
+                                    </div>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                    <script type="text/javascript" src="../js/circles.js"></script>
+                    <script>
+                        var colors = [
+                                ['#181115', '#30222A'], ['#181115', '#30222A'], ['#181115', '#30222A'], ['#181115', '#30222A']
+                        ];
+                        for (var i = 1; i <= 5; i++) {
+                            var child = document.getElementById('circles-' + i),
+                                percentage = 50 + (i * 10);
+
+                            Circles.create({
+                                id: child.id,
+                                percentage: percentage,
+                                radius: 80,
+                                width: 15,
+                                number: percentage / 10,
+                                text: '%',
+                                colors: colors[i - 1]
+                            });
+                        }
+
+                    </script>
+
+                    <!--/-->
+                </div>
+            </div>
+            <a class="down scroll" href="#projects"><span> </span></a>
+        </div>
+    </div>
+    <!------SKILLS Ends--------->
+    <!------PORTFOLIO Starts--------->
+    <div id="projects" class="Portfolio">
+        <div class="Portfolio-section text-center">
+            <h2><span> </span>PROJECTS<span> </span></h2>
+        </div>
+        <div class="container">
+            <div class="portfolio-grids">
+                <div class="portfolio-grid col-md-4">
+                    <a href="@Url.Action("Memoirs2010", "Projects")" target="_blank"><img src="../images/re1.jpg"></a>
+                    <p>
+                        A full-length game made with Ren'Py, a Python-based visual novel engine.
+                    </p>
+                    <a class="rightarrow" href="@Url.Action("Memoirs2010", "Projects")" target="_blank"><span> </span></a>
+                </div>
+                <div class="portfolio-grid col-md-4">
+                    <a href="../charactercreator/main.html" target="_blank"><img src="../images/re2.jpg"></a>
+                    <p>
+                        A browser-based dress up game designed and exported with GameMaker: Studio.
+                    </p>
+                    <a class="rightarrow" href="../charactercreator/main.html" target="_blank"><span> </span></a>
+                </div>
+                <div class="portfolio-grid col-md-4">
+                    <a href="http://www.taxhelp4less.com" target="_blank"><img src="../images/re8.jpg"></a>
+                    <p>
+                        A simple company website designed for Meyer Accounting and Tax, LLC.
+                    </p>
+                    <a class="rightarrow" href="http://www.taxhelp4less.com" target="_blank"><span> </span></a>
+                </div>
+                <div class="portfolio-grid col-md-4">
+                    <a href="http://whitesuncrafts.anigrams.org" target="_blank"><img src="../images/re7.jpg"></a>
+                    <p>
+                        Data-driven online store designed for White Sun Crafts and built with ASP.NET.
+                    </p>
+                    <a class="rightarrow" href="http://whitesuncrafts.anigrams.org" target="_blank"><span> </span></a>
+                </div>
+                <div class="portfolio-grid col-md-4">
+                    <a href="http://support.anigrams.org" target="_blank"><img src="../images/re9.jpg"></a>
+                    <p>
+                        An MVC application designed to keep track of bugs and issues in Anigrams apps.
+                    </p>
+                    <a class="rightarrow" href="http://support.anigrams.org" target="_blank"><span> </span></a>
+                </div>
+            </div>
+            <div class="clear"> </div>
+            <a class="portdown scroll" href="#resources"><span> </span></a>
+
+        </div>
+    </div>
+    <!------PORTFOLIO Ends------>
+    <!------RESOURCES Starts------>
+    @*<div id="resources" class="about">
+        <div class="container">
+            <div class="header-section text-center">
+                <h2><span></span>RESOURCES<span></span></h2>
+            </div>
+
+            <div class="col-md-4">
+                <h3>Classmates</h3>
+                <ul>
+                    <li><a href="http://www.idontcsharp.com/" target="_blank">Charlie Hopkins</a></li>
+                    <li><a href="http://www.codingwarren.com/" target="_blank">Nick Warren</a></li>
+                    <li><a href="http://www.algorithmsmith.com/" target="_blank">Ron Smith</a></li>
+                    <li><a href="http://www.mattsmithkc.com/" target="_blank">Matt Smith</a></li>
+                    <li><a href="http://www.bryantjholl.com/" target="_blank">Bryant Holl</a></li>
+                    <li><a href="http://www.dswaffordpmp.com/" target="_blank">Diana Swafford</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h3>Classmates</h3>
+                <ul>
+                    <li><a href="http://www.christophersimon.work/" target="_blank">Chris Simon</a></li>
+                    <li><a href="http://www.tracieroliver.com/" target="_blank">Tracie Oliver</a></li>
+                    <li><a href="http://www.afwebdevelopment.work/" target="_blank">Andrew Freeman</a></li>
+                    <li><a href="http://www.csharpnado.com/" target="_blank">Danny Freeman</a></li>
+                    <li><a href="http://www.delgadodirect.com/" target="_blank">Ryan Delgado</a></li>
+                    <li><a href="http://www.michaeldodev.work/" target="_blank">Michael Lewis</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h3>Other</h3>
+                <ul>
+                    <li><a href="http://www.w3schools.com/" target="_blank">W3 Schools</a></li>
+                    <li><a href="http://stackoverflow.com/" target="_blank">Stack Overflow</a></li>
+                    <li><a href="http://w3layouts.com/" target="_blank">W3layouts</a></li>
+                    <li><a href="http://www.renpy.org/" target="_blank">Ren'Py</a></li>
+                    <li><a href="http://www.yoyogames.com/studio" target="_blank">GameMaker: Studio</a></li>
+                </ul>
+            </div>
+            <div class="clear"> </div>
+            <a class="arrow scroll" href="#contact"><span> </span></a>
+        </div>
+    </div>*@
+    <!------Content Ends-------->
+    <!------FOOTER Starts----------->
+    <div id="contact" class="footer">
+        <div class="container">
+
+            <div class="contact-section text-center">
+                <h2><span> </span>CONTACT<span> </span></h2>
+            </div>
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="footer-left">
+                        <div class="social-icons">
+                            <a href="https://www.linkedin.com/in/cera-white-284a6041" target="_blank"><img src="../images/in.png"></a>
+                            <a href="https://www.facebook.com/cera.white.94" target="_blank"><img src="../images/fb.png"></a>
+                        </div>
+                        <p>
+                            If you like what you see, or if you would be interested in discussing possible employment opportunities, please contact me to schedule an interview. Thank you for your interest!
+                        </p>
+                        <br />
+                        <p class="copy-right">&copy; @DateTime.Now.Year Cera White. All rights reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="footer-right">
+                        <div class="form">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @placeholder = "Name" } })<br />
+
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @placeholder = "Email" } })<br />
+
+                                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @placeholder = "Message", @rows = "2", @cols = "70" } })<br />
+
+                                <div class="clear"> </div>
+                                <input type="submit" value="SEND" />
+                                //<input type="submit" value="SEND" onclick="return alert('Thank you! Your message has been sent.')">
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <a class="up scroll" href="#top-top"><span> </span></a>
+
+    </div>
+
+    <script src="../js/jquery.validate-vsdoc.js"></script>
+    <script src="../js/jquery.validate.min.js"></script>
+    <script src="../js/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
+

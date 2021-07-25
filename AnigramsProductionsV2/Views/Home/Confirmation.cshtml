@@ -1,0 +1,23 @@
+﻿@model AnigramsProductionsV2.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Thank You";
+}
+
+<!-- banner -->
+<div class="banner">
+    <div class="bnr2">
+    </div>
+</div>
+<!-- content -->
+<div class="contact">
+    <div class="container">
+        <div class="col-md-7 x-box-left">
+            @Html.Raw(ViewBag.Message)
+
+            <br /><br />
+            <a class="hvr-bounce-to-top" href="@Url.Action("Support", "Home")">Return to Support</a>
+        </div>
+    </div>
+</div>
+

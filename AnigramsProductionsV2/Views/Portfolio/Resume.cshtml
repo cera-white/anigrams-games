@@ -1,0 +1,146 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cera A. White - Resume</title>
+    <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/portfolio.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="../css/custom.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Cera A. White, Anigrams, Anigrams Productions, developer, .NET developer, portfolio, resume" />
+    <meta name="author" content="Cera A. White" />
+
+    <link rel="icon" href="~/images/icon.png" type="image/png" />
+
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <!---- start-smoth-scrolling---->
+    <script type="text/javascript" src="../js/move-top.js"></script>
+    <script type="text/javascript" src="../js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!---- start-smoth-scrolling---->
+</head>
+<body>
+    <!-- header -->
+    <div class="top-banner">
+        <div class="header-top">
+            <div class="container">
+                <div class="headr-left">
+                    <div class="social">
+                        <a href="https://www.linkedin.com/in/cera-white-284a6041" target="_blank" title="View my professional profile on Linked In"><i class="linkedin"></i></a>
+                        <a href="http://anigrams-games.tumblr.com/" target="_blank" title="Check out my blog where I support indie game devs"><i class="tumblr"></i></a>
+                        <a href="http://www.twitch.tv/anigrams/profile" target="_blank" title="Watch me play and review cool games on Twitch"><i class="twitch"></i></a>
+                        <a href="https://www.youtube.com/channel/UCODp-QC2dsOn_3HJ32TfsIQ" target="_blank" title="Visit the official Anigrams YouTube channel"><i class="youtube"></i></a>
+                        <a href="https://www.facebook.com/cera.white.94" target="_blank" title="Take a peek into my life outside of programming"><i class="facebook"></i></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="headr-right">
+                    <div class="details">
+                        <ul>
+                            <li class="switch-view"><a href="@Url.Action("Index", "Home")">Anigrams Productions</a></li>
+                            <li class="switch-view selected"><a href="@Url.Action("Index", "Portfolio")">Professional Portfolio</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--Content starts-->
+    <div class="content">
+        <!------About starts--------->
+        <div id="resume" class="about">
+            <div class="container">
+                <div class="header-section text-center">
+                    <h2><span> </span>CERA A. WHITE<span> </span></h2>
+                </div>
+                @*<p>College graduate with seven months internship experience seeking to leverage academic knowledge and practical experience to effectively fill a .NET developer position. Possesses BA in Computer Information Systems.</p>*@
+
+                <div class="resume-info">
+                    <h3>Skills</h3>
+                    <ul>
+                        <li>Technical experience with Visual Studio, C#, ASP.NET, SQL, HTML, JavaScript, and developing web applications.</li>
+                        <li>Careful attention to detail, with the ability to easily catch and troubleshoot errors as they arise during development.</li>
+                        <li>Skilled at understanding client needs and finding solutions through research, creativity, and independent thinking.</li>
+                        <li>Eager for new knowledge and experiences, with the ability to learn and adapt to new skills quickly.</li>
+                    </ul>
+                </div>
+
+                <div class="resume-info">
+                    <h3>Education</h3>
+
+                    <h4>Application Development</h4>
+                    <div class="article-info">Centriq Training</div>
+                    <ul>
+                        <li>Technical Training: Visual Studio, C# .NET, ASP.NET, MVC, SQL, SQL Server, HTML 5, CSS3, JavaScript, jQuery, RESTful API, Entity Framework, Responsive/Mobile Development, Professional IT Project Experience.</li>
+                        <li>Graduated June 16, 2016.</li>
+                    </ul>
+
+                    <h4>Bachelor of Business Administration</h4>
+                    <div class="article-info">Drury University</div>
+                    <ul>
+                        <li>Major in Computer Information Systems, Minor in Global Studies.</li>
+                        <li>Graduated with Honors, GPA: 3.91.</li>
+                        <li>Honor Society, Alpha Lambda Delta, Member.</li>
+                        <li>Graduated December 12, 2012.</li>
+                    </ul>
+                </div>
+
+                <div class="resume-info">
+                    <h3>Work Experience</h3>
+
+                    <h4>Software Engineer</h4>
+                    <div class="article-info">UnitedLex Corporation</div>
+                    <ul>
+                        <li>Design and develop high-quality software applications by writing testable, efficient, well-documented code.</li>
+                        <li>Support and work with business users and product management to understand, analyze, and develop solutions to solve client-driven requirements.</li>
+                        <li>Utilize knowledge of a full range of technologies to implement intelligent UI/UX design, add functionality through a robust service-based architecture, and support efficient database operations.</li>
+                    </ul>
+
+                    <h4>Web Designer &amp; Administrator</h4>
+                    <div class="article-info">White Sun Crafts</div>
+                    <ul>
+                        <li>Designed and administered a <a href="http://whitesuncrafts.anigrams.org" target="_blank">complete data-driven e-commerce site</a> from scratch using ASP.NET, which is integrated with PayPal in order to securely process online credit card transactions.</li>
+                        <li>Maintain and improve the site based on feedback and requirements from the client, which are logged through a <a href="http://support.anigrams.org" target="_blank">custom-built support ticket tracking application</a> where the client can submit issues and suggestions.</li>
+                    </ul>
+
+                    <h4>Training Supervisor &amp; Inventory Specialist</h4>
+                    <div class="article-info">RGIS Inventory Specialists</div>
+                    <ul>
+                        <li>Coordinate with a team of 6 to perform annual inventory audits for all Walgreens within the Greater Kansas City area, including regular travel to such cities as Topeka, KS and Columbia, MO.</li>
+                        <li>Count physical inventory in high-dollar areas such as pharmacies and stockrooms accurately and efficiently using the latest scanning equipment and software.</li>
+                        <li>Train new hires and employees in the proper use of scanning equipment and efficient counting techniques.</li>
+                    </ul>
+
+                    <h4>Web Developer &amp; Office Intern</h4>
+                    <div class="article-info">Meyer Accounting &amp; Tax, LLC</div>
+                    <ul>
+                        <li>Created and maintained a database of additional client information to function alongside commercial tax preparation software, intended to allow office employees to access relevant information on a client more easily and quickly.</li>
+                        <li>Designed and implemented a <a href="http://www.taxhelp4less.com" target="_blank">new company website</a>, including an accompanying mobile version, according to requirements set by the employer.</li>
+                        <li>Organized, filed, and created digital copies of client files while assisting with various office duties.</li>
+                    </ul>
+                </div>
+
+                <p><a href="../downloads/CeraWhiteResume.pdf" target="_blank">Download PDF Version</a></p>
+
+            </div>
+        </div>
+        <!------About Ends--------->
+    </div>
+</body>
+</html>

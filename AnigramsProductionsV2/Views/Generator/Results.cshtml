@@ -1,0 +1,88 @@
+﻿@using AnigramsProductionsV2.Models
+@model LanguageGeneratorViewModel
+@{
+    ViewBag.Title = "Language Generator - Anigrams Productions";
+}
+
+<!-- banner -->
+<div class="banner">
+    <div class="bnr2">
+    </div>
+</div>
+<!-- content -->
+<div class="about">
+    <div class="container">
+        <h2>The Anigrams Language Generator</h2>
+        <div class="about-info-grids">
+            <div class="col-xs-12 abt-info-pic">
+                <div style="width:100%">
+                    <label>Phonetic Symbols for @Model.LanguageName</label>
+                    <div class="clearfix"></div>
+                    <div style="width:50%;float:left;">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Consonants</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.ConsonantSymbols)
+                                {
+                                    <tr>
+                                        <td>@Html.Raw(item.Symbol)</td>
+                                        <td>@Html.Raw(item.Examples)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="width:50%;float:left;">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Vowels</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.VowelSymbols)
+                                {
+                                    <tr>
+                                        <td>@Html.Raw(item.Symbol)</td>
+                                        <td>@Html.Raw(item.Examples)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div style="margin-top:3%">
+                    <label>Nouns</label>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Word</th>
+                                <th>Phonetic</th>
+                                <th>English Approx.</th>
+                                <th>Gender</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Words.Where(x => x.Type == PartOfSpeech.Noun))
+                            {
+                                <tr>
+                                    <td>@item.Word</td>
+                                    <td>[@Html.Raw(item.Phonetic)]</td>
+                                    <td>@item.English</td>
+                                    <td>@item.Gender</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

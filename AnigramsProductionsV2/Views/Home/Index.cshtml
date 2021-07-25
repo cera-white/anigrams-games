@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "Anigrams Productions";
+}
+
+<!-- banner -->
+<!-- Slider-starts-Here -->
+<script src="~/js/responsiveslides.min.js"></script>
+<script>
+        $(function () {
+            $("#slider").responsiveSlides({
+                auto: true,
+                nav: false,
+                speed: 500,
+                namespace: "callbacks",
+                pager: true,
+            });
+        });
+
+</script>
+<div class="slider">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider">
+
+            <div class="slid banner1">
+                <div class="caption">
+                    <h3>Memoirs of an Angel (2010) Ver. 1.2 is now available!</h3>
+                    <p>The latest update comes with a fully revamped user interface, including a new Endings gallery, and also features a new and improved battle system. Download and play it today!</p>
+                </div>
+            </div>
+
+
+            <div class="slid banner2">
+                <div class="caption">
+                    <h3>Memoirs of an Angel: Legends is currently in production.</h3>
+                    <p>Return to the mythical land of Tyraca and help Princess Zuleika take back her throne once again, this time with a completely new story and an army you can build from the ground up.</p>
+                </div>
+            </div>
+
+
+            <div class="slid banner3">
+                <div class="caption">
+                    <h3>Upcoming project, W.I.S.H, is in pre-production.</h3>
+                    <p>Twins Seiko and Ein have always been a bit out of the ordinary, with the ability to see spirits from the other side. But they're about to discover just how dangerous the power of a wish can be...</p>
+                </div>
+            </div>
+
+        </ul>
+    </div>
+</div>
+<!-- content -->
+<div class="content">
+    <div class="container">
+        <div class="top-games">
+            <h3>Games &amp; Projects</h3>
+            <span></span>
+        </div>
+        <div class="top-game-grids">
+            <ul id="flexiselDemo1">
+                @foreach (var item in ViewBag.Projects)
+                {
+                    <li>
+                        <a href="@Url.Action("Details", "Projects", new { id = item.ProjectID })">
+                            <div class="game-grid">
+                                <h4>@item.ShortTitle</h4>
+                                <p>@item.ShortDescription</p>
+                                <img src="~/images/@item.PortraitThumb" class="img-responsive" alt="@item.Title" />
+                            </div>
+                        </a>
+                    </li>
+                }
+            </ul>
+
+            <script type="text/javascript">
+                    $(window).load(function () {
+                        $("#flexiselDemo1").flexisel({
+                            visibleItems: 4,
+                            animationSpeed: 1000,
+                            autoPlay: true,
+                            autoPlaySpeed: 3000,
+                            pauseOnHover: true,
+                            enableResponsiveBreakpoints: true,
+                            responsiveBreakpoints: {
+                                portrait: {
+                                    changePoint: 480,
+                                    visibleItems: 1
+                                },
+                                landscape: {
+                                    changePoint: 640,
+                                    visibleItems: 2
+                                },
+                                tablet: {
+                                    changePoint: 768,
+                                    visibleItems: 3
+                                }
+                            }
+                        });
+                    });
+            </script>
+            <script type="text/javascript" src="~/js/jquery.flexisel.js"></script>
+        </div>
+    </div>
+</div>
+<!-- poster -->
+<div class="poster">
+    <div class="container">
+        <div class="poster-info">
+            <h3>"Anigrams Plays Games" every Saturday night!</h3>
+            <p>
+                From free and commercial visual novels, to fun and colorful indie games, to the year's biggest titles, my resolution for 2016 (starting in March) is to stream live playthroughs on Twitch every Saturday night.
+                But if you miss it live, don't fret! Videos are saved in the archive for 15 days after airing, and my First Reaction videos are permanently saved as Highlights.
+                Check it out!
+            </p>
+            <a class="hvr-bounce-to-bottom" href="http://www.twitch.tv/anigrams" id="twitchbtn" target="_blank">Go to Channel</a>
+        </div>
+    </div>
+</div>
+<!-- x-box -->
+<div class="x-box">
+    <div class="container">
+        <div class="x-box_sec">
+            <div class="col-md-7 x-box-left">
+                <h2>We Value Your Feedback</h2>
+                <h3>No, seriously, we really do!</h3>
+                <p>
+                    I'm not some corporate entity or a robot or anything like that, I'm just a girl who likes playing games and designing my own when I have the time.
+                    That said, I love hearing from you guys about things I could work on and improve. So if you have any questions or concerns, or just want to tell me how much you like (or hate) my work, feel free to message me on Tumblr, Twitch, YouTube, or wherever else you happen to find the "Anigrams" name.
+                    I'll usually get back to you within 48 hours.
+                </p>
+                <a class="hvr-bounce-to-top" href="@Url.Action("Support","Home")">Send a Message</a>
+            </div>
+            <div class="col-md-5 x-box-right">
+                <img src="~/images/charactercreator.png" class="img-responsive" alt="dwarf character" />
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

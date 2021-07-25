@@ -1,0 +1,41 @@
+﻿@model AnigramsProductionsV2.Models.LanguageGeneratorViewModel
+@{
+    ViewBag.Title = "Language Generator - Anigrams Productions";
+}
+
+<!-- banner -->
+<div class="banner">
+    <div class="bnr2">
+    </div>
+</div>
+<!-- content -->
+<div class="about">
+    <div class="container">
+        <h2>The Anigrams Language Generator</h2>
+        <div class="about-info-grids">
+            <div class="col-xs-12 abt-info-pic">
+                <p>Get started by selecting a model language which will determine the phonetic sounds used and basic grammar rules. Then enter a list of words to be generated. Please include the <a href="https://en.oxforddictionaries.com/grammar/word-classes-or-parts-of-speech" target="_blank">part of speech</a> next to the word so it can be properly categorized.</p>
+
+                @using (Html.BeginForm("Index", "Generator", FormMethod.Post, new { @id = "languageForm" }))
+                {
+                    <div style="margin-top:3%">
+                        <label>Model Language</label>
+                        @Html.DropDownListFor(x => x.LanguageID, new SelectList(ViewBag.Languages, "LanguageID", "Name"), new { @class = "form-control" })
+                    </div>
+                    <div style="margin-top:3%">
+                        <label>Word List</label>
+                        @Html.TextAreaFor(x => x.WordText, 20, 40, new { @class = "form-control" })
+                    </div>
+
+                    <a class="block-btn hvr-bounce-to-top" href="#" onclick="document.getElementById('languageForm').submit()">Generate Language</a>
+                }
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-xs-12 abt-info-pic" style="margin-top:5%">
+                <p>The following resources were used: <a href="http://www.4stepstofluency.com/german-pronunciation/" target="_blank">German IPA</a>, <a href="http://www.4stepstofluency.com/french-pronunciation/" target="_blank">French IPA</a>, <a href="http://www.4stepstofluency.com/spanish-pronunciation/" target="_blank">Spanish IPA</a>, <a href="http://www.antimoon.com/how/pronunc-soundsipa.htm" target="_blank">English IPA</a>, <a href="https://en.wikipedia.org/wiki/Help:IPA_for_Latin" target="_blank">Latin IPA</a>, <a href="https://fluent-forever.com/the-method/vocabulary/base-vocabulary-list/" target="_blank">Vocabulary List</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+

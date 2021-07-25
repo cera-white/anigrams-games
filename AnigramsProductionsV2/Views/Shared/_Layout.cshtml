@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+
+    <link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/custom.css" rel="stylesheet" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Anigrams, Anigrams Productions, Anigrams Games, Cera A. White, game, otome, visual novel" />
+    <meta name="description" content="The official site of Anigrams Productions, the one-woman team behind the 'Memoirs' series. Featuring games, books, and more!" />
+    <meta name="author" content="Cera A. White" />
+    <meta http-equiv="content-language" content="en-us" />
+
+    <link rel="icon" href="~/images/favicon.ico" type="image/x-icon" />
+
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <h1 style="display: none;">@ViewBag.Title</h1>
+    <!-- header -->
+    <div class="top-banner">
+        <div class="header">
+            <div class="container">
+                <div class="headr-left">
+                    <div class="social">
+                        <a href="https://www.linkedin.com/in/cera-white-284a6041" target="_blank" title="View my professional profile on Linked In"><i class="linkedin"></i></a>
+                        <a href="http://anigrams-games.tumblr.com/" target="_blank" title="Check out my blog where I support indie game devs"><i class="tumblr"></i></a>
+                        <a href="http://www.twitch.tv/anigrams/profile" target="_blank" title="Watch me play and review cool games on Twitch"><i class="twitch"></i></a>
+                        <a href="https://www.youtube.com/channel/UCODp-QC2dsOn_3HJ32TfsIQ" target="_blank" title="Visit the official Anigrams YouTube channel"><i class="youtube"></i></a>
+                        <a href="https://www.facebook.com/cera.white.94" target="_blank" title="Take a peek into my life outside of programming"><i class="facebook"></i></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="headr-right">
+                    <div class="details">
+                        <ul>
+                            <li class="switch-view selected"><a href="@Url.Action("Index", "Home")">Anigrams Productions</a></li>
+                            <li class="switch-view"><a href="@Url.Action("Index", "Portfolio")">Professional Portfolio</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!--banner-info-->
+        <div class="banner-info">
+            <div class="container" id="topnav">
+                <div class="logo">
+                    <a href="@Url.Action("Index", "Home")"><img src="~/images/Anigrams Logo.png" alt="Anigrams Logo" id="logo" /></a>
+                </div>
+                <div class="top-menu">
+                    <span class="menu"></span>
+                    <ul class="nav1">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("Index", "Projects")">Projects</a></li>
+                        <li><a href="@Url.Action("About", "Home")">About</a></li>
+                        <li><a href="http://support.anigrams.org" target="_blank" title="Submit problems and feedback through the Anigrams Support app">Support</a></li>
+                        <li><a href="http://anigrams-games.tumblr.com/" target="_blank" title="Visit the official Anigrams Productions Tumblr">Blog</a></li>
+                    </ul>
+                </div>
+                <!-- script-for-menu -->
+                <script>
+                    $("span.menu").click(function () {
+                        $("ul.nav1").slideToggle(300, function () {
+                            // Animation complete.
+                        });
+                    });
+                </script>
+                <!-- /script-for-menu -->
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody() 
+
+    <!-- footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-grids">
+                <div class="col-sm-3 ftr-info">
+                    <h3>About Us</h3>
+                    <p>
+                        Started in 2009, Anigrams Productions produces amateur games, working with artists from all over the world to make stories that focus on rich, diverse characters and fantasy worlds.
+                    </p>
+                </div>
+                <div class="col-sm-3 ftr-grid">
+                    <h3>Projects</h3>
+                    <ul class="ftr-list">
+                        <li><a href="@Url.Action("Details", "Projects", new { id = 1})">Memoirs of an Angel (2010)</a></li>
+                        <li><a href="@Url.Action("Details", "Projects", new { id = 2 })">Memoirs Character Creator</a></li>
+                        <li><a href="@Url.Action("Details", "Projects", new { id = 3 })">Memoirs of an Angel: Legends</a></li>
+                        <li><a href="@Url.Action("Details", "Projects", new { id = 4 })">W.I.S.H</a></li>
+                        <li><a href="@Url.Action("Details", "Projects", new { id = 5 })">Memoirs of Genesis</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 ftr-grid">
+                    <h3>Social</h3>
+                    <ul class="ftr-list">
+                        <!--<li><a href="https://www.linkedin.com/in/cera-white-284a6041" target="_blank">Linked In</a></li>-->
+                        <li><a href="http://anigrams-games.tumblr.com/" target="_blank">Tumblr</a></li>
+                        <li><a href="http://www.twitch.tv/anigrams/profile" target="_blank">Twitch</a></li>
+                        <li><a href="https://www.youtube.com/channel/UCODp-QC2dsOn_3HJ32TfsIQ" target="_blank">YouTube</a></li>
+                        <!--<li><a href="https://www.facebook.com/cera.white.94" target="_blank">Facebook</a></li>-->
+                    </ul>
+                </div>
+                <div class="col-sm-3 ftr-grid">
+                    <h3>Information</h3>
+                    <ul class="ftr-list">
+                        <li><a href="@Url.Action("About", "Home")">About Us</a></li>
+                        <li><a href="@Url.Action("Support", "Home")">Support</a></li>
+                        <li><a href="@Url.Action("SiteMap", "Home")" target="_blank">Site Map</a></li>
+                        <li><a href="@Url.Action("Index", "Portfolio")">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <div class="copywrite">
+        <div class="container">
+            <p>&copy; @DateTime.Now.Year Anigrams Productions. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+        </div>
+    </div>
+    <!---->
+
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

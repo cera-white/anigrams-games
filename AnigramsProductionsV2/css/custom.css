@@ -1,0 +1,164 @@
+﻿li.switch-view a {
+    color: #fff;
+}
+
+li.switch-view a:hover {
+    color: #cca771;
+}
+
+li.selected a {
+    color: #cca771;
+}
+
+#logo {
+    width: 90%;
+    margin-top: -15px;
+    margin-left: -25px;
+    max-width: 400px;
+}
+
+#twitchbtn {
+    background-color: #a35da8;
+}
+
+.block-btn {
+    display: inline-block;
+    background: #cca771;
+    color: #fff;
+    padding: 0.8em 1.7em;
+    margin-top: 2em;
+    text-decoration: none;
+}
+
+.blog-info-text a {
+    color: #a35da8;
+}
+
+.blog-info-text a:hover {
+    color: #cca771;
+}
+
+.header-top {
+    background: #222;
+    padding: 1em 0;
+    font-family: 'OpenSans-Regular';
+    font-size: 100%;
+}
+
+.sngl-img {
+    max-width: 150px;
+}
+
+#resources h3 {
+    text-align: left;
+    color: gray;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    margin-left: 2%;
+}
+
+#resources li {
+    text-align: left;
+    list-style: none;
+    margin-left: 2%;
+}
+
+#resources li a {
+    color: #e7eaf3;
+}
+
+#resources li a:hover {
+    color: gray;
+}
+
+#about {
+    margin-top: -65px;
+}
+
+#projects {
+    background-color: #e7eaf3;
+    margin-top: -65px;
+}
+
+#resume {
+    margin-top: -65px;
+    background-color: white;
+    color: #222;
+}
+
+#resume h2 {
+    color: #222;
+}
+
+#resume p {
+    color: #222;
+    padding: 3%;
+    padding-top: 0;
+}
+
+.resume-info {
+    border-top: 1px solid lightgray;
+    padding: 3%;
+    text-align: left;
+}
+
+.resume-info h3 {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.resume-info h4 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.resume-info li {
+    margin-left: 17px;
+    padding-left: 10px;
+}
+
+.article-info {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: gray;
+    font-style: italic;
+}
+
+@media (max-width: 992px) {
+    .x-box-right {
+        display: none;
+    }
+}
+
+@media (max-width: 859px) {
+    .logo {
+        width: 40%;
+        padding-left: 0.5%;
+    }
+}
+
+@media (max-width: 769px) {
+    .logo {
+        display: none;
+    }
+}
+
+@media (max-width: 714px) {
+    .top-menu ul li:last-child {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .top-menu ul li:last-child {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 543px) {
+    div.social {
+        display: none;
+    }
+}

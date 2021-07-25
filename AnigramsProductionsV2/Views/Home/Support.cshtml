@@ -1,0 +1,58 @@
+﻿@model AnigramsProductionsV2.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Support - Anigrams Productions";
+}
+
+<!-- banner -->
+<div class="banner">
+    <div class="bnr2">
+    </div>
+</div>
+<!-- content -->
+<div class="contact">
+    <div class="container">
+        <div class="contact-head">
+            <h2>Support</h2>
+            <br />
+            <h3>Technical Support</h3>
+            <p>If you have any questions about using or installing our games, or are having technical issues, please fill out the Contact form below. Include as much information as you can, such as your operating system, what error message(s) you're getting, and even links to screenshots if possible. Thanks!</p>
+            <br />
+            <h3>Hints and Walkthroughs</h3>
+            <p>I will try to release official walkthroughs for the games that need them. Feel free to redistribute these walkthroughs or even write your own. But if you're stuck on something specific and can't find the answer in the walkthrough, send me a messange and I'll be happy to help.</p>
+            <br />
+            <h3>"Let's Play" and Review Videos</h3>
+            <p>You have permission to record video footage of these games, even those that are released commercially, as long as your copy of the game was legally obtained. A link back to where to download the game would be nice, but isn't required by any means.</p>
+            <br /><br />
+
+            <h2>Contact Us</h2>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="col-md-6 contact-left">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @placeholder = "Name" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @placeholder = "Email" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                    @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @placeholder = "Subject" } })
+                    @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6 contact-right">
+                    @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @placeholder = "Message" } })
+                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+
+                    <input type="submit" value="SEND" />
+                </div>
+                <div class="clearfix"></div>
+            }<!--end form-->
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
